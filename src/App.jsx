@@ -1,7 +1,22 @@
 import "./App.css";
-import Homepage from "./components/Homepage/Homepage.jsx";
-import Shoppage from "./components/Shoppage/Shoppage.jsx";
+import { Outlet, Link } from "react-router-dom";
 
-function App() {}
+const App = () => {
+  return (
+    <>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/shop">Shop</Link>
+          </li>
+        </ul>
+      </nav>
+      <Outlet />
+    </>
+  );
+};
 
 export default App;
