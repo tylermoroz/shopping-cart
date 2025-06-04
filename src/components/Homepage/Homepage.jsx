@@ -5,8 +5,8 @@ const Homepage = () => {
   return (
     <>
       <div>
-        <h1>Welcome Home</h1>
-        <p>Click here to see our inventory</p>
+        <h1>Welcome to The Lands Between</h1>
+        <p>Click here to browse our wares.</p>
         <nav>
           <ul>
             <li>

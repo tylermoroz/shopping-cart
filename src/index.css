@@ -1,0 +1,23 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-image: linear-gradient(
+    to bottom,
+    rgb(11 31 47) 0%,
+    rgba(11, 31, 47, 0.99) 15%,
+    rgba(11, 31, 47, 0.96) 30%,
+    rgba(11, 31, 47, 0.94) 45%,
+    rgba(11, 31, 47, 0.92) 60%,
+    rgba(11, 31, 47, 0.9) 75%,
+    rgba(66, 93, 110, 1) 100%
+  );
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  color: aliceblue;
+}
