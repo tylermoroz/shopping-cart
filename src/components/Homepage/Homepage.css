@@ -1,0 +1,28 @@
+.homepage-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  padding: 20px;
+}
+
+.homepage-container h1 {
+  font-size: 3em;
+}
+
+.hero-description {
+  font-size: 1.7em;
+  text-align: center;
+}
+
+.browsing-description {
+  font-size: 1.2em;
+}
+
+.legendary-carousel {
+  width: 40%;
+}
+
+.carousel-description {
+  font-size: 1.2em;
+}
