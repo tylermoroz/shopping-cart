@@ -22,6 +22,12 @@
 .legendary-carousel {
   width: 40%;
 }
+.swiper-slide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
 .carousel-description {
   font-size: 1.2em;
