@@ -14,7 +14,12 @@ const App = () => {
           </li>
         </ul>
       </nav>
-      <Outlet />
+      <main>
+        <Outlet />
+      </main>
+      <footer>
+        <p>© 2025 Elden Gear Inc. All rights reserved.</p>
+      </footer>
     </>
   );
 };

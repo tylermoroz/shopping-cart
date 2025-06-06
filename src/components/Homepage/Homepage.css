@@ -3,32 +3,41 @@
   flex-direction: column;
   width: 100%;
   align-items: center;
-  padding: 20px;
+  text-align: center;
 }
 
 .homepage-container h1 {
   font-size: 3em;
+  margin: 0.5em;
 }
 
 .hero-description {
   font-size: 1.7em;
-  text-align: center;
+  padding: 0 1.5em;
 }
 
 .browsing-description {
   font-size: 1.2em;
+  padding: 0 1.5em;
 }
 
 .legendary-carousel {
   width: 40%;
+  padding: 0 1.5em;
 }
+
 .swiper-slide {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 0;
+}
+.swiper-slide h1 {
+  font-size: 2.5em;
 }
 
 .carousel-description {
   font-size: 1.2em;
+  padding: 0 1.5em;
 }
