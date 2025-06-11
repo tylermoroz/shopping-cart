@@ -1,0 +1,41 @@
+.product-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 20em;
+  margin: 0;
+  height: 60em;
+  border: 2px solid goldenrod;
+  border-radius: 3px;
+  padding: 1em;
+}
+
+.stats-tables {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.attack-defence {
+  display: flex;
+  gap: 1em;
+}
+
+.scaling-requirements {
+  display: flex;
+  gap: 1em;
+}
+
+.attack,
+.defence,
+.scaling,
+.requirements {
+  width: 5em;
+}
+
+table {
+  border: 1px solid goldenrod;
+  border-collapse: collapse;
+  border-radius: 3px;
+}

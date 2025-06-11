@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Product from "./Product.jsx";
+import "./ProductList.css";
 
 const selection = [
   "Rivers of Blood",
@@ -51,7 +52,7 @@ const ProductList = () => {
   }, []);
 
   return (
-    <div>
+    <div className="product-list-container">
       {loading ? (
         <p style={{ color: "white" }}>Loading weapons...</p>
       ) : products.length > 0 ? (
