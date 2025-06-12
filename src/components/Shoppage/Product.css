@@ -1,14 +1,26 @@
 .product-card {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   width: 20em;
   margin: 0;
-  height: 60em;
+  height: 50em;
   border: 2px solid goldenrod;
-  border-radius: 3px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px goldenrod, 0 0 10px goldenrod, 0 0 15px goldenrod;
   padding: 1em;
+}
+
+.product-card h3 {
+  font-size: 2.5em;
+  margin-top: 0;
+  margin-bottom: 0.5em;
+}
+
+.product-card img {
+  width: 10em;
+  height: 10em;
 }
 
 .stats-tables {
@@ -35,7 +47,106 @@
 }
 
 table {
-  border: 1px solid goldenrod;
+  border: none;
   border-collapse: collapse;
-  border-radius: 3px;
+}
+
+th,
+td {
+  border: 1px solid goldenrod;
+}
+
+table tr:first-child th {
+  border-top: none;
+}
+
+table tr:last-child td {
+  border-bottom: none;
+}
+
+table tr td:first-child,
+table tr th:first-child {
+  border-left: none;
+}
+
+table tr td:last-child,
+table tr th:last-child {
+  border-right: none;
+}
+
+thead,
+tbody {
+  border: none;
+}
+
+.attack tbody tr:first-child td:first-child {
+  color: white;
+}
+
+.attack tbody tr:nth-child(2) td:first-child {
+  color: #3fbddd;
+}
+
+.attack tbody tr:nth-child(3) td:first-child {
+  color: orangered;
+}
+
+.attack tbody tr:nth-child(4) td:first-child {
+  color: #d5d559;
+}
+
+.attack tbody tr:nth-child(5) td:first-child {
+  color: #ffcc99;
+}
+
+.attack tbody tr:nth-child(6) td:first-child {
+  color: #c64949;
+}
+
+.defence tbody tr:first-child td:first-child {
+  color: white;
+}
+
+.defence tbody tr:nth-child(2) td:first-child {
+  color: #3fbddd;
+}
+
+.defence tbody tr:nth-child(3) td:first-child {
+  color: orangered;
+}
+
+.defence tbody tr:nth-child(4) td:first-child {
+  color: #d5d559;
+}
+
+.defence tbody tr:nth-child(5) td:first-child {
+  color: #ffcc99;
+}
+
+.defence tbody tr:nth-child(6) td:first-child {
+  color: #666699;
+}
+
+.scaling-requirements tbody tr:first-child td:first-child,
+.scaling-requirements tbody tr:nth-child(2) td:first-child,
+.scaling-requirements tbody tr:nth-child(3) td:first-child,
+.weapon-weight tbody tr:first-child td:first-child,
+.weapon-category {
+  color: goldenrod;
+}
+
+.weapon-weight tbody tr:first-child td {
+  border-top: none;
+}
+
+.weapon-weight tbody tr:first-child td:first-child {
+  padding-right: 0.5em;
+}
+
+.weapon-weight tbody tr:first-child td:last-child {
+  padding-left: 0.5em;
+}
+
+.weapon-category {
+  font-size: 1.2em;
 }

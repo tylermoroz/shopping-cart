@@ -8,7 +8,7 @@ const Product = ({ product }) => {
       <p>{product.description}</p>
       <div className="stats-tables">
         <div className="attack-defence">
-          <table className="attack" border="1">
+          <table className="attack">
             <thead>
               <tr>
                 <th colSpan="2">Attack</th>
@@ -23,7 +23,7 @@ const Product = ({ product }) => {
               ))}
             </tbody>
           </table>
-          <table className="defence" border="1">
+          <table className="defence">
             <thead>
               <tr>
                 <th colSpan="2">Guard</th>
@@ -40,7 +40,7 @@ const Product = ({ product }) => {
           </table>
         </div>
         <div className="scaling-requirements">
-          <table className="scaling" border="1">
+          <table className="scaling">
             <thead>
               <tr>
                 <th colSpan="2">Scaling</th>
@@ -55,7 +55,7 @@ const Product = ({ product }) => {
               ))}
             </tbody>
           </table>
-          <table className="requirements" border="1">
+          <table className="requirements">
             <thead>
               <tr>
                 <th colSpan="2">Requires</th>
@@ -72,8 +72,8 @@ const Product = ({ product }) => {
           </table>
         </div>
       </div>
-      <p>{product.category}</p>
-      <table border="1">
+      <p className="weapon-category">{product.category}</p>
+      <table className="weapon-weight">
         <tbody>
           <tr>
             <td>Weight</td>
