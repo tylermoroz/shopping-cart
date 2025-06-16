@@ -5,7 +5,7 @@ const Shoppage = () => {
   return (
     <>
       <div className="shop-page-container">
-        <h1>Let's go shopping</h1>
+        <h1>Elden Gear Inventory</h1>
         <div>
           <ProductList />
         </div>

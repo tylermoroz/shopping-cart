@@ -41,7 +41,7 @@ const ArmamentCarousel = () => {
         />
       </SwiperSlide>
       <SwiperSlide>
-        <h1>Grafted Blade</h1>
+        <h1>Grafted Blade Greatsword</h1>
         <img src="/src/assets/grafted_blade.webp" alt="Grafted Blade" />
       </SwiperSlide>
       <SwiperSlide>

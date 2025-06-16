@@ -131,6 +131,7 @@ tbody {
 .scaling-requirements tbody tr:nth-child(2) td:first-child,
 .scaling-requirements tbody tr:nth-child(3) td:first-child,
 .weapon-weight tbody tr:first-child td:first-child,
+.weapon-value tbody tr:first-child td:first-child,
 .weapon-category {
   color: goldenrod;
 }
@@ -149,4 +150,16 @@ tbody {
 
 .weapon-category {
   font-size: 1.2em;
+}
+
+.weapon-value tbody tr:first-child td {
+  border-top: none;
+}
+
+.weapon-value tbody tr:first-child td:first-child {
+  padding-right: 0.5em;
+}
+
+.weapon-value tbody tr:first-child td:last-child {
+  padding-left: 0.5em;
 }

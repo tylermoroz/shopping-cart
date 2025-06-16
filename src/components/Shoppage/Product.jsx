@@ -1,6 +1,11 @@
 import "./Product.css";
+import selection from "../../weapons/selection";
 
 const Product = ({ product }) => {
+  const weapon = selection.find(
+    (item) => item.name.toLowerCase() === product.name.toLowerCase()
+  );
+
   return (
     <div className="product-card">
       <h3>{product.name}</h3>
@@ -78,6 +83,14 @@ const Product = ({ product }) => {
           <tr>
             <td>Weight</td>
             <td>{product.weight}</td>
+          </tr>
+        </tbody>
+      </table>
+      <table className="weapon-value">
+        <tbody>
+          <tr>
+            <td>Runes</td>
+            <td>{weapon.value}</td>
           </tr>
         </tbody>
       </table>
