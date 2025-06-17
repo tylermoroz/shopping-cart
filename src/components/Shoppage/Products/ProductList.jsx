@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Product from "./Product.jsx";
 import "./ProductList.css";
-import selection from "../../weapons/selection.js";
+import selection from "../../../weapons/selection.js";
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);

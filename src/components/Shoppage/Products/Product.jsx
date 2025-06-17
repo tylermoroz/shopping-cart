@@ -1,5 +1,5 @@
 import "./Product.css";
-import selection from "../../weapons/selection";
+import selection from "../../../weapons/selection";
 
 const Product = ({ product }) => {
   const weapon = selection.find(

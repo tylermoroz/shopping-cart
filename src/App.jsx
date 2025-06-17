@@ -16,7 +16,7 @@ const App = () => {
             <Link to="/shop">Shop</Link>
           </li>
           <li>
-            <Link to="/cart">
+            <Link to="/shop/cart">
               🛒
               {cartItems.length > 0 && <span>{cartItems.length}</span>}
             </Link>

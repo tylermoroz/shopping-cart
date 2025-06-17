@@ -1,13 +1,24 @@
 import "./Shoppage.css";
-import ProductList from "./ProductList";
+import ProductList from "./Products/ProductList.jsx";
+import { Outlet, useLocation } from "react-router-dom";
 
 const Shoppage = () => {
+  const location = useLocation();
+  const isCartOpen = location.pathname.endsWith("/cart");
+
   return (
     <>
       <div className="shop-page-container">
-        <h1>Elden Gear Inventory</h1>
-        <div>
-          <ProductList />
+        <div className="shop-content-container">
+          <div className="store-container">
+            <h1>Elden Gear Inventory</h1>
+            <ProductList />
+          </div>
+          {isCartOpen && (
+            <div className="outlet-container">
+              <Outlet />
+            </div>
+          )}
         </div>
       </div>
     </>
