@@ -1,10 +1,14 @@
 import "./Product.css";
 import selection from "../../../weapons/selection";
 
-const Product = ({ product }) => {
+const Product = ({ product, cartItems, setCartItems }) => {
   const weapon = selection.find(
     (item) => item.name.toLowerCase() === product.name.toLowerCase()
   );
+
+  const handleAddToCart = () => {
+    setCartItems([...cartItems, product.name]);
+  };
 
   return (
     <div className="product-card">
@@ -94,6 +98,7 @@ const Product = ({ product }) => {
           </tr>
         </tbody>
       </table>
+      <button onClick={handleAddToCart}>Add to cart</button>
     </div>
   );
 };

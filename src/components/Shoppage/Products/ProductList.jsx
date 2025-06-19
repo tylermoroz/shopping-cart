@@ -3,7 +3,7 @@ import Product from "./Product.jsx";
 import "./ProductList.css";
 import selection from "../../../weapons/selection.js";
 
-const ProductList = () => {
+const ProductList = ({ cartItems, setCartItems }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -50,7 +50,14 @@ const ProductList = () => {
       {loading ? (
         <p style={{ color: "white" }}>Loading weapons...</p>
       ) : products.length > 0 ? (
-        products.map((p) => <Product key={p.id} product={p} />)
+        products.map((p) => (
+          <Product
+            key={p.id}
+            product={p}
+            cartItems={cartItems}
+            setCartItems={setCartItems}
+          />
+        ))
       ) : (
         <p style={{ color: "white" }}>No weapons found.</p>
       )}

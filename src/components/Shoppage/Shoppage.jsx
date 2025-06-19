@@ -1,10 +1,11 @@
 import "./Shoppage.css";
 import ProductList from "./Products/ProductList.jsx";
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet, useLocation, useOutletContext } from "react-router-dom";
 
 const Shoppage = () => {
   const location = useLocation();
   const isCartOpen = location.pathname.endsWith("/cart");
+  const { cartItems, setCartItems } = useOutletContext();
 
   return (
     <>
@@ -12,11 +13,11 @@ const Shoppage = () => {
         <div className="shop-content-container">
           <div className="store-container">
             <h1>Elden Gear Inventory</h1>
-            <ProductList />
+            <ProductList cartItems={cartItems} setCartItems={setCartItems} />
           </div>
           {isCartOpen && (
             <div className="outlet-container">
-              <Outlet />
+              <Outlet context={{ cartItems }} />
             </div>
           )}
         </div>
