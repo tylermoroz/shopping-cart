@@ -6,8 +6,14 @@ const Product = ({ product, cartItems, setCartItems }) => {
     (item) => item.name.toLowerCase() === product.name.toLowerCase()
   );
 
-  const handleAddToCart = () => {
-    setCartItems([...cartItems, product.name]);
+  const handleAddToCart = (product) => {
+    const productToCart = {
+      name: product.name,
+      img: product.image,
+      category: product.category,
+      value: weapon.value,
+    };
+    setCartItems([...cartItems, productToCart]);
   };
 
   return (
@@ -98,7 +104,7 @@ const Product = ({ product, cartItems, setCartItems }) => {
           </tr>
         </tbody>
       </table>
-      <button onClick={handleAddToCart}>Add to cart</button>
+      <button onClick={() => handleAddToCart(product)}>Add to cart</button>
     </div>
   );
 };

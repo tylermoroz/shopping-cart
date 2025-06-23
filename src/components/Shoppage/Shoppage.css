@@ -18,4 +18,9 @@
 
 .outlet-container {
   flex: 1;
+  border: 2px solid rgba(228, 228, 255, 0.233);
+  border-top: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
