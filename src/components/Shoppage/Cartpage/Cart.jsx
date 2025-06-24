@@ -6,9 +6,9 @@ const Cart = () => {
   const { cartItems } = useOutletContext();
 
   return (
-    <div>
+    <div className="cart-container">
       <h3>Your Cart</h3>
-      <ul>
+      <ul className="cart-items">
         {cartItems.length > 0 ? (
           cartItems.map((item, index) => (
             <li key={index}>
