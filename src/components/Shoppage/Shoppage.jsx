@@ -17,7 +17,7 @@ const Shoppage = () => {
           </div>
           {isCartOpen && (
             <div className="outlet-container">
-              <Outlet context={{ cartItems }} />
+              <Outlet context={{ cartItems, setCartItems }} />
             </div>
           )}
         </div>

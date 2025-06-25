@@ -1,9 +1,28 @@
 import { useOutletContext } from "react-router-dom";
+import { useEffect, useState } from "react";
 import "../Products/Product.css";
 import "./Cart.css";
 
 const Cart = () => {
-  const { cartItems } = useOutletContext();
+  const { cartItems, setCartItems } = useOutletContext();
+  const [cartTotal, setCartTotal] = useState(0);
+
+  const handleCartTotal = () => {
+    const total = cartItems.reduce((sum, item) => sum + item.value, 0);
+    setCartTotal(total);
+  };
+
+  const removeFromCart = (indexToRemove) => {
+    setCartItems((prevItems) => {
+      const newItems = [...prevItems];
+      newItems.splice(indexToRemove, 1);
+      return newItems;
+    });
+  };
+
+  useEffect(() => {
+    handleCartTotal();
+  });
 
   return (
     <div className="cart-container">
@@ -24,6 +43,9 @@ const Cart = () => {
                     </tr>
                   </tbody>
                 </table>
+                <button onClick={() => removeFromCart(index)}>
+                  Remove from cart
+                </button>
               </div>
             </li>
           ))
@@ -31,6 +53,7 @@ const Cart = () => {
           <p>Your cart is empty</p>
         )}
       </ul>
+      <p>Total: {cartTotal} Runes</p>
     </div>
   );
 };
