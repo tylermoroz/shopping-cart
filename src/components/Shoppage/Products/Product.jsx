@@ -1,10 +1,17 @@
 import "./Product.css";
 import selection from "../../../weapons/selection";
+import { useState } from "react";
 
 const Product = ({ product, cartItems, setCartItems }) => {
+  const [quantity, setQuantity] = useState(1);
+
   const weapon = selection.find(
     (item) => item.name.toLowerCase() === product.name.toLowerCase()
   );
+
+  const handleQuantityChange = (e) => {
+    setQuantity(parseInt(e.target.value, 10));
+  };
 
   const handleAddToCart = (product) => {
     const productToCart = {
@@ -12,8 +19,22 @@ const Product = ({ product, cartItems, setCartItems }) => {
       img: product.image,
       category: product.category,
       value: weapon.value,
+      quantity: quantity,
     };
-    setCartItems([...cartItems, productToCart]);
+
+    const existingItem = cartItems.find((item) => item.name === product.name);
+
+    if (existingItem) {
+      const updatedCart = cartItems.map((item) =>
+        item.name === product.name
+          ? { ...item, quantity: item.quantity + quantity }
+          : item
+      );
+      setCartItems(updatedCart);
+    } else {
+      setCartItems([...cartItems, productToCart]);
+    }
+    setQuantity(1);
   };
 
   return (
@@ -104,7 +125,16 @@ const Product = ({ product, cartItems, setCartItems }) => {
           </tr>
         </tbody>
       </table>
-      <button onClick={() => handleAddToCart(product)}>Add to cart</button>
+      <div className="add-to-cart-container">
+        <input
+          type="number"
+          step="1"
+          min="1"
+          value={quantity}
+          onChange={handleQuantityChange}
+        />
+        <button onClick={() => handleAddToCart(product)}>Add to cart</button>
+      </div>
     </div>
   );
 };

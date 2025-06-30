@@ -19,6 +19,13 @@
   justify-content: space-evenly;
 }
 
+.cart-items li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1em;
+}
+
 .cart-items p {
   text-align: center;
 }
@@ -51,4 +58,8 @@
 
 .cart-item p {
   font-size: 1em;
+}
+
+.item-count p {
+  color: goldenrod;
 }

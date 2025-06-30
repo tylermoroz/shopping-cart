@@ -8,7 +8,10 @@ const Cart = () => {
   const [cartTotal, setCartTotal] = useState(0);
 
   const handleCartTotal = () => {
-    const total = cartItems.reduce((sum, item) => sum + item.value, 0);
+    const total = cartItems.reduce(
+      (sum, item) => sum + item.value * item.quantity,
+      0
+    );
     setCartTotal(total);
   };
 
@@ -46,6 +49,9 @@ const Cart = () => {
                 <button onClick={() => removeFromCart(index)}>
                   Remove from cart
                 </button>
+              </div>
+              <div className="item-count">
+                <p>×{item.quantity}</p>
               </div>
             </li>
           ))
