@@ -15,6 +15,15 @@ const Cart = () => {
     setCartTotal(total);
   };
 
+  const handleItemCount = (itemToUpdate, amount) => {
+    const updatedCart = cartItems.map((item) => {
+      return item.name === itemToUpdate.name
+        ? { ...item, quantity: parseInt(amount, 10) }
+        : item;
+    });
+    setCartItems(updatedCart);
+  };
+
   const removeFromCart = (indexToRemove) => {
     setCartItems((prevItems) => {
       const newItems = [...prevItems];
@@ -46,12 +55,16 @@ const Cart = () => {
                     </tr>
                   </tbody>
                 </table>
+                <input
+                  type="number"
+                  min="1"
+                  step="1"
+                  value={item.quantity}
+                  onChange={(e) => handleItemCount(item, e.target.value)}
+                />
                 <button onClick={() => removeFromCart(index)}>
                   Remove from cart
                 </button>
-              </div>
-              <div className="item-count">
-                <p>×{item.quantity}</p>
               </div>
             </li>
           ))
