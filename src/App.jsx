@@ -5,6 +5,11 @@ import { useState } from "react";
 const App = () => {
   const [cartItems, setCartItems] = useState([]);
 
+  const totalItemsInCart = cartItems.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
+
   return (
     <>
       <nav>
@@ -18,7 +23,7 @@ const App = () => {
           <li>
             <Link to="/shop/cart">
               🛒
-              {cartItems.length > 0 && <span>{cartItems.length}</span>}
+              {cartItems.length > 0 && <span>{totalItemsInCart}</span>}
             </Link>
           </li>
         </ul>
