@@ -163,3 +163,13 @@ tbody {
 .weapon-value tbody tr:first-child td:last-child {
   padding-left: 0.5em;
 }
+
+.add-to-cart-container {
+  display: flex;
+  gap: 0.5em;
+}
+
+.add-to-cart-container input {
+  width: 7ch;
+  text-align: right;
+}
