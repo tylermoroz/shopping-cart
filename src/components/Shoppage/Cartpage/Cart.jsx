@@ -6,6 +6,13 @@ import "./Cart.css";
 const Cart = () => {
   const { cartItems, setCartItems } = useOutletContext();
   const [cartTotal, setCartTotal] = useState(0);
+  const [inputValues, setInputValues] = useState(() => {
+    const map = {};
+    cartItems.forEach((item) => {
+      map[item.name] = item.quantity.toString();
+    });
+    return map;
+  });
 
   const handleCartTotal = () => {
     const total = cartItems.reduce(
@@ -15,7 +22,16 @@ const Cart = () => {
     setCartTotal(total);
   };
 
+  const handleOnChange = (name, value) => {
+    setInputValues((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
   const handleItemCount = (itemToUpdate, amount) => {
+    if (isNaN(amount) || amount < 1) return;
+
     const updatedCart = cartItems.map((item) => {
       return item.name === itemToUpdate.name
         ? { ...item, quantity: parseInt(amount, 10) }
@@ -59,8 +75,14 @@ const Cart = () => {
                   type="number"
                   min="1"
                   step="1"
-                  value={item.quantity}
-                  onChange={(e) => handleItemCount(item, e.target.value)}
+                  value={inputValues[item.name] ?? item.quantity}
+                  onChange={(e) => handleOnChange(item.name, e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      e.target.blur();
+                    }
+                  }}
+                  onBlur={() => handleItemCount(item, inputValues[item.name])}
                 />
                 <button onClick={() => removeFromCart(index)}>
                   Remove from cart
