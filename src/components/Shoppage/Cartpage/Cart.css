@@ -29,7 +29,7 @@
   justify-content: space-between;
   align-items: center;
   width: 10em;
-  height: 14em;
+  height: 15em;
   margin: 0;
   border: 2px solid goldenrod;
   border-radius: 5px;
@@ -51,4 +51,16 @@
 
 .cart-item p {
   font-size: 1em;
+}
+
+.item-control-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2em;
+}
+
+.item-control-container input {
+  width: 7ch;
+  text-align: right;
 }

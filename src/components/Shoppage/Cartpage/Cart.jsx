@@ -6,6 +6,7 @@ import "./Cart.css";
 const Cart = () => {
   const { cartItems, setCartItems } = useOutletContext();
   const [cartTotal, setCartTotal] = useState(0);
+
   const [inputValues, setInputValues] = useState(() => {
     const map = {};
     cartItems.forEach((item) => {
@@ -43,7 +44,15 @@ const Cart = () => {
   const removeFromCart = (indexToRemove) => {
     setCartItems((prevItems) => {
       const newItems = [...prevItems];
+      const removedItem = newItems[indexToRemove];
       newItems.splice(indexToRemove, 1);
+
+      setInputValues((prevInputs) => {
+        const updatedInputs = { ...prevInputs };
+        delete updatedInputs[removedItem.name];
+        return updatedInputs;
+      });
+
       return newItems;
     });
   };
@@ -71,22 +80,24 @@ const Cart = () => {
                     </tr>
                   </tbody>
                 </table>
-                <input
-                  type="number"
-                  min="1"
-                  step="1"
-                  value={inputValues[item.name] ?? item.quantity}
-                  onChange={(e) => handleOnChange(item.name, e.target.value)}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") {
-                      e.target.blur();
-                    }
-                  }}
-                  onBlur={() => handleItemCount(item, inputValues[item.name])}
-                />
-                <button onClick={() => removeFromCart(index)}>
-                  Remove from cart
-                </button>
+                <div className="item-control-container">
+                  <input
+                    type="number"
+                    min="1"
+                    step="1"
+                    value={inputValues[item.name] ?? item.quantity}
+                    onChange={(e) => handleOnChange(item.name, e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") {
+                        e.target.blur();
+                      }
+                    }}
+                    onBlur={() => handleItemCount(item, inputValues[item.name])}
+                  />
+                  <button onClick={() => removeFromCart(index)}>
+                    Remove from cart
+                  </button>
+                </div>
               </div>
             </li>
           ))
