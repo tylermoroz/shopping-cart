@@ -10,7 +10,7 @@ import Cart from "./components/Shoppage/Cartpage/Cart.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <App initialCartItems={[]} />,
     children: [
       {
         index: true,

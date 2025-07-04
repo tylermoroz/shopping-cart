@@ -2,8 +2,8 @@ import "./App.css";
 import { Outlet, Link } from "react-router-dom";
 import { useState } from "react";
 
-const App = () => {
-  const [cartItems, setCartItems] = useState([]);
+const App = ({ initialCartItems = [] }) => {
+  const [cartItems, setCartItems] = useState(initialCartItems);
 
   const totalItemsInCart = cartItems.reduce(
     (total, item) => total + item.quantity,
