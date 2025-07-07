@@ -43,6 +43,7 @@ const ProductList = ({ cartItems, setCartItems }) => {
     };
 
     fetchPagesUntilFound();
+    console.log(foundWeapons);
   }, []);
 
   return (
