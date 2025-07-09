@@ -69,27 +69,30 @@ describe("Navbar Cart Icon State", () => {
 
     expect(cartIcon).toHaveTextContent("🛒7");
   });
-  it("Clicking the add to cart button updates the cart state", async () => {
-    const router = createMemoryRouter(routes, { initialEntries: ["/shop"] });
 
-    render(<RouterProvider router={router} />);
+  describe("Adding items to cart", () => {
+    it("Clicking the add to cart button updates the cart state", async () => {
+      const router = createMemoryRouter(routes, { initialEntries: ["/shop"] });
 
-    const input = await screen.findByRole("spinbutton");
-    const button = await screen.findByRole(
-      "button",
-      { name: /add to cart/i },
-      { timeout: 3000 }
-    );
+      render(<RouterProvider router={router} />);
 
-    fireEvent.click(button);
+      const input = await screen.findByRole("spinbutton");
+      const button = await screen.findByRole(
+        "button",
+        { name: /add to cart/i },
+        { timeout: 3000 }
+      );
 
-    const cartIcon = screen.getByTestId("cart-icon");
+      fireEvent.click(button);
 
-    expect(cartIcon).toHaveTextContent("🛒1");
+      const cartIcon = screen.getByTestId("cart-icon");
 
-    fireEvent.change(input, { target: { value: "2" } });
-    fireEvent.click(button);
+      expect(cartIcon).toHaveTextContent("🛒1"); //first user click with the default input value of 1
 
-    expect(cartIcon).toHaveTextContent("🛒3");
+      fireEvent.change(input, { target: { value: "2" } });
+      fireEvent.click(button);
+
+      expect(cartIcon).toHaveTextContent("🛒3"); //second user click with a custom input value of 2 increasing their total cart items to 3
+    });
   });
 });
