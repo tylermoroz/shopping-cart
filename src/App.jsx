@@ -20,7 +20,7 @@ const App = ({ initialCartItems = [] }) => {
           <li>
             <Link to="/shop">Shop</Link>
           </li>
-          <li>
+          <li data-testid="cart-icon">
             <Link to="/shop/cart">
               🛒
               {cartItems.length > 0 && <span>{totalItemsInCart}</span>}
