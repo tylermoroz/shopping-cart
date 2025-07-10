@@ -38,6 +38,52 @@ afterEach(() => {
   vi.restoreAllMocks();
 });
 
+describe("Navbar links open correct routes", () => {
+  it("Home link renders the homepage", async () => {
+    const router = createMemoryRouter(routes, { initialEntries: ["/shop"] });
+
+    render(<RouterProvider router={router} />);
+
+    const homeLink = screen.getByRole("link", { name: /home/i });
+
+    fireEvent.click(homeLink);
+
+    const homeHeading = await screen.findByText(/welcome tarnished/i);
+    expect(homeHeading).toBeInTheDocument();
+  });
+
+  it("Shop link renders the shop page", async () => {
+    const router = createMemoryRouter(routes, { initialEntries: ["/"] });
+
+    render(<RouterProvider router={router} />);
+
+    const shopLink = screen.getByRole("link", { name: /shop/i });
+
+    fireEvent.click(shopLink);
+
+    const shopHeading = await screen.findByText(/elden gear inventory/i);
+    expect(shopHeading).toBeInTheDocument();
+  });
+
+  it("Cart link renders the cart page", async () => {
+    const router = createMemoryRouter(routes, {
+      initialEntries: ["/"],
+    });
+
+    render(<RouterProvider router={router} />);
+
+    const cartLink = screen.getByRole("link", { name: /^🛒/i });
+
+    fireEvent.click(cartLink);
+
+    const cartHeading = await screen.findByRole("heading", {
+      level: 3,
+      name: /your cart/i,
+    });
+    expect(cartHeading).toBeInTheDocument();
+  });
+});
+
 describe("Navbar Cart Icon State", () => {
   it("renders the cart icon as empty", () => {
     render(
