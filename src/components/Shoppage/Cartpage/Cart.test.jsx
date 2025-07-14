@@ -3,8 +3,24 @@ import { describe, it, vi, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter, Outlet, Routes, Route } from "react-router-dom";
 
+const renderWithCart = (cartItems) => {
+  const MockLayout = () => (
+    <Outlet context={{ cartItems, setCartItems: vi.fn() }} />
+  );
+
+  render(
+    <MemoryRouter initialEntries={["/cart"]}>
+      <Routes>
+        <Route element={<MockLayout />}>
+          <Route path="/cart" element={<Cart />} />
+        </Route>
+      </Routes>
+    </MemoryRouter>
+  );
+};
+
 describe("Cart displays proper data", () => {
-  it("Render's items from cart data", () => {
+  it("Renders items from cart data", () => {
     const mockCartItems = [
       {
         name: "Godslayer's Greatsword",
@@ -15,44 +31,16 @@ describe("Cart displays proper data", () => {
       },
     ];
 
-    const MockLayout = () => {
-      return (
-        <Outlet context={{ cartItems: mockCartItems, setCartItems: vi.fn() }} />
-      );
-    };
-
-    render(
-      <MemoryRouter initialEntries={["/cart"]}>
-        <Routes>
-          <Route element={<MockLayout />}>
-            <Route path="/cart" element={<Cart />} />
-          </Route>
-        </Routes>
-      </MemoryRouter>
-    );
+    renderWithCart(mockCartItems);
 
     const item = screen.getByText(/godslayer's greatsword/i);
     expect(item).toBeInTheDocument();
   });
 
-  it("Render's an empty cart when data is empty", () => {
+  it("Renders an empty cart when data is empty", () => {
     const mockCartItems = [];
 
-    const MockLayout = () => {
-      return (
-        <Outlet context={{ cartItems: mockCartItems, setCartItems: vi.fn() }} />
-      );
-    };
-
-    render(
-      <MemoryRouter initialEntries={["/cart"]}>
-        <Routes>
-          <Route element={<MockLayout />}>
-            <Route path="/cart" element={<Cart />} />
-          </Route>
-        </Routes>
-      </MemoryRouter>
-    );
+    renderWithCart(mockCartItems);
 
     const emptyCart = screen.getByText(/your cart is empty/i);
     expect(emptyCart).toBeInTheDocument();
@@ -76,21 +64,7 @@ describe("Cart displays proper data", () => {
       },
     ];
 
-    const MockLayout = () => {
-      return (
-        <Outlet context={{ cartItems: mockCartItems, setCartItems: vi.fn() }} />
-      );
-    };
-
-    render(
-      <MemoryRouter initialEntries={["/cart"]}>
-        <Routes>
-          <Route element={<MockLayout />}>
-            <Route path="/cart" element={<Cart />} />
-          </Route>
-        </Routes>
-      </MemoryRouter>
-    );
+    renderWithCart(mockCartItems);
 
     expect(screen.getByText(/Total: 203250 Runes/i)).toBeInTheDocument();
   });
@@ -106,21 +80,7 @@ describe("Cart displays proper data", () => {
       },
     ];
 
-    const MockLayout = () => {
-      return (
-        <Outlet context={{ cartItems: mockCartItems, setCartItems: vi.fn() }} />
-      );
-    };
-
-    render(
-      <MemoryRouter initialEntries={["/cart"]}>
-        <Routes>
-          <Route element={<MockLayout />}>
-            <Route path="/cart" element={<Cart />} />
-          </Route>
-        </Routes>
-      </MemoryRouter>
-    );
+    renderWithCart(mockCartItems);
 
     const quantity = screen.getByRole("spinbutton");
     expect(quantity).toHaveValue(5);
