@@ -1,17 +1,19 @@
 import Cart from "./Cart";
-import { describe, it, vi, expect } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { describe, it, expect } from "vitest";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { MemoryRouter, Outlet, Routes, Route } from "react-router-dom";
+import { useState } from "react";
 
-const renderWithCart = (cartItems) => {
-  const MockLayout = () => (
-    <Outlet context={{ cartItems, setCartItems: vi.fn() }} />
-  );
+const renderWithCart = (initialItems) => {
+  const MockLayout = ({ initialItems }) => {
+    const [cartItems, setCartItems] = useState(initialItems);
+    return <Outlet context={{ cartItems, setCartItems }} />;
+  };
 
   render(
     <MemoryRouter initialEntries={["/cart"]}>
       <Routes>
-        <Route element={<MockLayout />}>
+        <Route element={<MockLayout initialItems={initialItems} />}>
           <Route path="/cart" element={<Cart />} />
         </Route>
       </Routes>
@@ -84,5 +86,55 @@ describe("Cart displays proper data", () => {
 
     const quantity = screen.getByRole("spinbutton");
     expect(quantity).toHaveValue(5);
+  });
+
+  it("User can change the quantity of an item in the cart", async () => {
+    const mockCartItems = [
+      {
+        name: "Godslayer's Greatsword",
+        quantity: 1,
+        img: "https://example.com/image.jpg",
+        category: "Colossal Sword",
+        value: 41750,
+      },
+    ];
+
+    renderWithCart(mockCartItems);
+
+    const newQuantity = screen.getByRole("spinbutton");
+
+    fireEvent.change(newQuantity, { target: { value: "2" } });
+    fireEvent.blur(newQuantity);
+
+    const total = await screen.findByText(/Total: 83500 Runes/i);
+
+    expect(newQuantity).toHaveValue(2);
+    expect(total).toBeInTheDocument();
+  });
+
+  it("User can delete an item from the cart", async () => {
+    const mockCartItems = [
+      {
+        name: "Godslayer's Greatsword",
+        quantity: 1,
+        img: "https://example.com/image.jpg",
+        category: "Colossal Sword",
+        value: 41750,
+      },
+    ];
+
+    renderWithCart(mockCartItems);
+
+    const deleteButton = screen.getByRole("button", {
+      name: /remove from cart/i,
+    });
+
+    fireEvent.click(deleteButton);
+
+    const total = await screen.findByText(/Total: 0 Runes/i);
+    const item = screen.queryByText(/godslayer's greatsword/i);
+
+    expect(item).not.toBeInTheDocument();
+    expect(total).toBeInTheDocument();
   });
 });
