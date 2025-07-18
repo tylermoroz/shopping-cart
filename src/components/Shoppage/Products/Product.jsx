@@ -41,7 +41,7 @@ const Product = ({ product, cartItems, setCartItems }) => {
     <div className="product-card">
       <h3>{product.name}</h3>
       <img src={product.image} alt={product.name} />
-      <p>{product.description}</p>
+      <p className="weapon-description">{product.description}</p>
       <div className="stats-tables">
         <div className="attack-defence">
           <table className="attack">

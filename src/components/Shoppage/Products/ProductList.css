@@ -7,3 +7,9 @@
   margin: 0;
   gap: 3em;
 }
+
+@media (max-width: 600px) {
+  .product-list-container {
+    gap: 1em;
+  }
+}

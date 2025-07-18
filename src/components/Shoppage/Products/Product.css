@@ -23,6 +23,10 @@
   height: 10em;
 }
 
+.weapon-description {
+  font-size: 1em;
+}
+
 .stats-tables {
   display: flex;
   flex-direction: column;
@@ -136,6 +140,10 @@ tbody {
   color: goldenrod;
 }
 
+.weapon-category {
+  font-size: 1em;
+}
+
 .weapon-weight tbody tr:first-child td {
   border-top: none;
 }
@@ -172,4 +180,125 @@ tbody {
 .add-to-cart-container input {
   width: 7ch;
   text-align: right;
+}
+
+@media (max-width: 1100px) {
+  .product-card {
+    width: 15em;
+    height: 51em;
+    padding: 1.5em;
+  }
+
+  .product-card h3 {
+    font-size: 2em;
+  }
+
+  .weapon-description {
+    font-size: 1em;
+  }
+
+  .weapon-category {
+    font-size: 1em;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .stats-tables {
+    gap: 0.8em;
+  }
+
+  .attack-defence .scaling-requirements {
+    gap: 0.8em;
+  }
+
+  .attack,
+  .defence,
+  .scaling,
+  .requirements {
+    width: 3.5em;
+  }
+
+  .attack th,
+  .attack td,
+  .defence th,
+  .defence td,
+  .scaling th,
+  .scaling td,
+  .requirements th,
+  .requirements td,
+  .weapon-weight td {
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 600px) {
+  .product-card {
+    width: 7em;
+    height: 43em;
+    border: 1px solid goldenrod;
+    box-shadow: 0 0 3px goldenrod, 0 0 7px goldenrod, 0 0 15px goldenrod;
+    padding: 1.5em;
+  }
+
+  .product-card h3 {
+    font-size: 1.5em;
+    margin: 0;
+  }
+
+  .product-card img {
+    width: 7em;
+    height: 7em;
+  }
+
+  .weapon-description {
+    font-size: 0.7em;
+    margin: 0;
+  }
+
+  .weapon-category {
+    font-size: 0.8em;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .stats-tables {
+    gap: 0.5em;
+  }
+
+  .attack-defence .scaling-requirements {
+    gap: 0.5em;
+  }
+
+  .attack,
+  .defence,
+  .scaling,
+  .requirements {
+    width: 3em;
+  }
+
+  .attack th,
+  .attack td,
+  .defence th,
+  .defence td,
+  .scaling th,
+  .scaling td,
+  .requirements th,
+  .requirements td,
+  .weapon-weight td {
+    font-size: 0.8em;
+  }
+
+  .add-to-cart-container {
+    gap: 0.2em;
+  }
+
+  .add-to-cart-container input {
+    width: 5ch;
+    text-align: right;
+    height: 1em;
+  }
+
+  .add-to-cart-container button {
+    font-size: 0.5em;
+  }
 }
