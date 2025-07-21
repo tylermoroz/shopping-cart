@@ -21,6 +21,7 @@
 
 .cart-items p {
   text-align: center;
+  font-size: 1em;
 }
 
 .cart-item {
@@ -61,6 +62,94 @@
 }
 
 .item-control-container input {
-  width: 7ch;
+  width: 5ch;
   text-align: right;
+}
+
+@media (max-width: 1100px) {
+  .cart-container h3 {
+    font-size: 2.5em;
+  }
+
+  .cart-items {
+    row-gap: 1.5em;
+    padding: 1em;
+  }
+
+  .cart-item {
+    width: 10em;
+    height: 15em;
+    padding: 0.5em;
+  }
+
+  .cart-item h3 {
+    font-size: 1.2em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+
+  .cart-item p {
+    font-size: 1em;
+    margin-top: 0.5em;
+  }
+
+  .cart-item .weapon-value {
+    font-size: 1em;
+    margin-bottom: 0.3em;
+  }
+
+  .item-control-container input {
+    width: 5ch;
+    height: 1em;
+    font-size: 0.8em;
+  }
+
+  .input-control-container button {
+    height: 1em;
+    font-size: 0.8em;
+  }
+}
+
+@media (max-width: 600px) {
+  .cart-container {
+    width: 100%;
+  }
+
+  .cart-container h3 {
+    font-size: 1.8em;
+  }
+
+  .cart-items {
+    row-gap: 1em;
+    padding: 1em;
+  }
+
+  .cart-item {
+    width: 7em;
+    height: 12em;
+    border: 1px solid goldenrod;
+    box-shadow: 0 0 3px goldenrod, 0 0 7px goldenrod, 0 0 15px goldenrod;
+    padding: 0.5em;
+  }
+
+  .cart-item h3 {
+    font-size: 1em;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+  }
+
+  .cart-item img {
+    width: 4em;
+    height: 4em;
+  }
+
+  .cart-item p {
+    font-size: 0.8em;
+    margin-top: 0.5em;
+  }
+
+  .cart-item .weapon-value {
+    font-size: 0.8em;
+    margin-bottom: 0.3em;
+  }
 }

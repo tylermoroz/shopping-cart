@@ -237,7 +237,7 @@ tbody {
     height: 43em;
     border: 1px solid goldenrod;
     box-shadow: 0 0 3px goldenrod, 0 0 7px goldenrod, 0 0 15px goldenrod;
-    padding: 1.5em;
+    padding: 1em;
   }
 
   .product-card h3 {
@@ -299,6 +299,6 @@ tbody {
   }
 
   .add-to-cart-container button {
-    font-size: 0.5em;
+    font-size: 0.6em;
   }
 }

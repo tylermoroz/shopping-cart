@@ -14,6 +14,7 @@
 
 .store-container {
   flex: 3;
+  padding: 0.5em;
 }
 
 .store-container h1 {
@@ -39,5 +40,9 @@
 @media (max-width: 600px) {
   .store-container h1 {
     font-size: 1.8em;
+  }
+
+  .outlet-container {
+    width: 50%;
   }
 }
